@@ -2,3 +2,23 @@
 A place to configuration files in containers, testing the dependencies needed for them to run.
 
 See the [[file:Makefile][Makefile]] for the commands used.
+
+** Packing Pure-Plus packages
+1) Build and run container with =make all=
+2) Run Emacs =emacs ~/.emacs=
+    - Should since packages have not been downloaded
+3) Download pure packages with =M-x jmn-install-plus-packages=
+4) Change directory to apps: =cd /app/=
+5) Place elpa packages into the attached volume with  =./package_elpa.sh=
+
+** Other tools to bring in/test
+*** pandoc
+- Download =arm64.tar.gz= version of latest from https://github.com/jgm/pandoc/releases
+- untar with =tar -xzvf <name>=
+- executable is in the =pandoc/bin=
+
+*** emacs VSCode extension
+
+** Notes
+*** z needed at the end of the volume attachment for SELinux
+https://stackoverflow.com/questions/24288616/permission-denied-on-accessing-host-directory-in-docker

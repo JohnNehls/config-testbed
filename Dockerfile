@@ -15,9 +15,11 @@ RUN dnf -y update && \
 WORKDIR /app
 
 COPY .emacs /root
-RUN mkdir -p ~/Documents/gtd
+RUN mkdir -p /root/Documents/gtd
+COPY package_elpa.sh /app
+
 COPY .bashrc /root
 
-
+WORKDIR /root
 # Default command
 CMD ["/bin/bash"]
