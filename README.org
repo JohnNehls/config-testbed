@@ -6,7 +6,7 @@ See the [[file:Makefile][Makefile]] for the commands used.
 ** Packing Pure-Plus packages
 1) Build and run container with =make all=
 2) Run Emacs =emacs ~/.emacs=
-    - Should since packages have not been downloaded
+    - Should fail since packages have not been downloaded
 3) Download pure packages with =M-x jmn-install-plus-packages=
 4) Change directory to apps: =cd /app/=
 5) Place elpa packages into the attached volume with  =./package_elpa.sh=
