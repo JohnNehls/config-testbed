@@ -5,6 +5,7 @@ FROM rockylinux:8
 RUN dnf -y update && \
     dnf -y groupinstall "Development Tools" && \
     dnf -y install \
+        gcc \
         emacs \
         git \
         python3 \      
@@ -14,12 +15,16 @@ RUN dnf -y update && \
 # Set up a working directory
 WORKDIR /app
 
-COPY .emacs /root
+RUN mkdir -p /root/.emacs.d/
+# make sure the init.el runs no matter how old the emacs is
+RUN echo "(load-file \"~/.emacs.d/init.el\")" > /root/.emacs
+COPY .emacs /root/.emacs.d/init.el
 RUN mkdir -p /root/Documents/gtd
+
 COPY package_elpa.sh /app
 
 COPY .bashrc /root
 
-WORKDIR /root
+#WORKDIR /root
 # Default command
 CMD ["/bin/bash"]

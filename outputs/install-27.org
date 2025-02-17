@@ -1,0 +1,53 @@
+* Install Emacs on Rocky 8
+- error with 27 when running script 
+- move on to emacs 28
+- default display server is X11, not Wayland so configure with X11
+
+* Install from source
+** emacs 28 with native compilation
+   
+*** enable repos needed for =dnf builddep -y emacs= 
+#+BEGIN_SRC shell
+dnf config-manager --set-enabled devel
+#+END_SRC
+
+#+RESULTS:
+-  documentation on the other repos which can be enabled [[https://wiki.rockylinux.org/rocky/repo/#notes-on-lack-of-updates-repo][here]]
+- need BaseOS, Appstream, and Devel
+
+make a directory for dependencies
+#+BEGIN_SRC shell :results silent
+#+END_SRC
+
+
+* Installing rpms DNW
+
+## Installed rpm
+Downloaded from [[https://rpmfind.net/linux/centos-stream/9-stream/AppStream/x86_64/os/Packages/emacs-27.2-8.el9.x86_64.rpm][here]], described as from CentOS Stream 9 AppStream for x86_64
+- could not get the libc.so.6 to link
+
+#+BEGIN_SRC bash :results output
+cd /app/outputs
+rpm -i emacs-27.2-8.el9.x86_64.rpm
+#+END_SRC
+
+#+RESULTS:
+error: Failed dependencies:
+	emacs-common = 1:27.2-8.el9 is needed by emacs-1:27.2-8.el9.x86_64
+	libc.so.6(GLIBC_2.32)(64bit) is needed by emacs-1:27.2-8.el9.x86_64
+	libc.so.6(GLIBC_2.33)(64bit) is needed by emacs-1:27.2-8.el9.x86_64
+	libc.so.6(GLIBC_2.34)(64bit) is needed by emacs-1:27.2-8.el9.x86_64
+	libjansson.so.4()(64bit) is needed by emacs-1:27.2-8.el9.x86_64
+	libjansson.so.4(libjansson.so.4)(64bit) is needed by emacs-1:27.2-8.el9.x86_64
+	libjavascriptcoregtk-4.0.so.18()(64bit) is needed by emacs-1:27.2-8.el9.x86_64
+	libm.so.6(GLIBC_2.29)(64bit) is needed by emacs-1:27.2-8.el9.x86_64
+	libselinux.so.1(LIBSELINUX_1.0)(64bit) is needed by emacs-1:27.2-8.el9.x86_64
+	libwebkit2gtk-4.0.so.37()(64bit) is needed by emacs-1:27.2-8.el9.x86_64
+
+** install emacs common from the same repo
+#+BEGIN_SRC bash :results output
+cd /app/outputs
+rpm -i emacs-common-27.2-8.el9.x86_64.rpm
+#+END_SRC
+
+#+RESULTS:
