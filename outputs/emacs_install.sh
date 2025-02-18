@@ -17,7 +17,9 @@ IFS=$'\n\t'
 #
 
 echo ---- INSTALLS ----
-# dnf builddep -y emacs 
+# dnf builddep -y emacs
+echo "This step should be taken care of already"
+
 
 # NOTE: Both CC and PKG_CONFIG_PATH appear to be unused
 CC='CFLAGS=-DMAIL_USE_LOCKF -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-U_FORTIFY_SOURCE,-D_FORTIFY_SOURCE=3 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64  -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer

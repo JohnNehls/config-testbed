@@ -21,8 +21,6 @@ RUN echo "(load-file \"~/.emacs.d/init.el\")" > /root/.emacs
 COPY .emacs /root/.emacs.d/init.el
 RUN mkdir -p /root/Documents/gtd
 
-COPY package_elpa.sh /app
-
 COPY .bashrc /root
 
 #WORKDIR /root

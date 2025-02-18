@@ -1,3 +1,0 @@
-[submodule "outputs/emacs-repo"]
-	path = outputs/emacs-repo
-	url = https://github.com/emacs-mirror/emacs.git
