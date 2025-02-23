@@ -8,17 +8,24 @@ See the [[file:Makefile][Makefile]] for the commands used.
 2) Run Emacs =emacs ~/.emacs=
     - Should fail since packages have not been downloaded
 3) Download pure packages with =M-x jmn-install-plus-packages=
-4) Change directory to apps: =cd /app/=
-5) Place elpa packages into the attached volume with  =./package_elpa.sh=
+4) Change to shared volume: =cd /app/output/=
+5) Place Elpa packages into the attached volume with Makefile: =make package-elpa=
+6) Installing newer emacs versions (28) is also explored with:
+    - =make download-rpms=
+    -  =make install-rpms=
+    -  =make clone-emacs=
+    -  =make run-emacs-installer=
+    -  =make package-rpms=
 
 ** Other tools to bring in/test
 *** pandoc
-- Download =arm64.tar.gz= version of latest from https://github.com/jgm/pandoc/releases
+- Download =amd64.tar.gz= version of latest from https://github.com/jgm/pandoc/releases
 - untar with =tar -xzvf <name>=
 - executable is in the =pandoc/bin=
 
 *** emacs VSCode extension
+May need to test these in the future
 
 ** Notes
-*** z needed at the end of the volume attachment for SELinux
+*** Container: z needed at the end of the volume attachment for SELinux
 https://stackoverflow.com/questions/24288616/permission-denied-on-accessing-host-directory-in-docker
